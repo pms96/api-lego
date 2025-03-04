@@ -24,4 +24,11 @@ class User extends Authenticatable
 
     public function collection()
     {
-        return $this->has
+        return $this->hasMany(UserCollection::class);
+    }
+
+    public function wishlist()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+}
