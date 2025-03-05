@@ -16,7 +16,8 @@ class CollectionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'brickheadz_id' => 'required|exists:brickheadz,id',
+            'brickheadz_id' => 'required|exists:brickheadzs,id',
+            'user_id' => 'required|exists:users,id',
             'date_acquired' => 'nullable|date',
             'price_acquired' => 'nullable|numeric',
             'status' => 'nullable|in:Nuevo,Usado,Dañado',

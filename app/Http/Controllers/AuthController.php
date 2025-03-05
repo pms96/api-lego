@@ -39,7 +39,7 @@ class AuthController extends Controller
             throw ValidationException::withMessages(['email' => 'Credenciales incorrectas']);
         }
 
-        return response()->json(['token' => $user->createToken('API Token')->plainTextToken]);
+        return response()->json(['token' => $user->createToken('API Token')->plainTextToken, 'userId' => $user->id]);
     }
 
     public function logout(Request $request)
