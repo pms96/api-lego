@@ -24,7 +24,7 @@ class User extends Authenticatable
 
     public function collection()
     {
-        return $this->hasMany(UserCollection::class)->orderBy('brickheadz_id', 'DESC');
+        return $this->hasMany(UserCollection::class)->orderedDesc();
     }
 
     public function wishlist()

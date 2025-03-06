@@ -28,4 +28,9 @@ class UserCollection extends Model
     {
         return $this->belongsTo(Brickheadz::class);
     }
+
+    public function scopeOrderedDesc($query)
+    {
+        return $query->orderBy('brickheadz_id', 'DESC');
+    }
 }
