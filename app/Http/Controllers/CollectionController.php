@@ -20,7 +20,7 @@ class CollectionController extends Controller
             'user_id' => 'required|exists:users,id',
             'date_acquired' => 'nullable|date',
             'price_acquired' => 'nullable|numeric',
-            'status' => 'nullable|in:Nuevo,Usado,Dañado',
+            'status' => 'nullable|in:NEW,USED,DAMAGED',
         ]);
 
         $collection = $request->user()->collection()->create($request->all());
