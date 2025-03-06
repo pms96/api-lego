@@ -19,7 +19,7 @@ class CollectionController extends Controller
             'brickheadz_id' => 'required|exists:brickheadzs,id',
             'user_id' => 'required|exists:users,id',
             'date_acquired' => 'nullable|date',
-            'price_acquired' => 'nullable|numeric',
+            'price_acquired' => 'nullable',
             'status' => 'nullable|in:NEW,USED,DAMAGED',
         ]);
 
