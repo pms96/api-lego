@@ -10,7 +10,7 @@ class CollectionController extends Controller
 {
     public function index(Request $request)
     {
-        return CollectionResource::collection($request->user()->collection);
+        return CollectionResource::collection($request->user()->collection()->paginate(10));
     }
 
     public function store(Request $request)
