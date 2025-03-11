@@ -10,7 +10,7 @@ class BrickheadzController extends Controller
 {
     public function index()
     {
-        return BrickheadzResource::collection(Brickheadz::paginate(10));
+        return BrickheadzResource::collection(Brickheadz::paginate(12));
     }
 
     public function show($id)

@@ -10,7 +10,7 @@ class CollectionController extends Controller
 {
     public function index(Request $request)
     {
-        return CollectionResource::collection($request->user()->collection()->paginate(10));
+        return CollectionResource::collection($request->user()->collection()->paginate(12));
     }
 
     public function store(Request $request)
@@ -20,7 +20,7 @@ class CollectionController extends Controller
             'user_id' => 'required|exists:users,id',
             'date_acquired' => 'nullable|date',
             'price_acquired' => 'nullable',
-            'status' => 'nullable|in:NEW,USED,DAMAGED',
+            'status' => 'nullable|in:NEW,BOX AND INSTRUCTIONS,ONLY BOX,INSTRUCTIONS,COMPLETE,INCOMPLETE',
         ]);
 
         $collection = $request->user()->collection()->create($request->all());
