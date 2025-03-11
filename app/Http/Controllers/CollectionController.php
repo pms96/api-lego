@@ -35,9 +35,7 @@ class CollectionController extends Controller
             'date_acquired' => 'nullable|date',
             'price_acquired' => 'nullable',
             'status' => 'nullable|in:NEW,BOX AND INSTRUCTIONS,ONLY BOX,INSTRUCTIONS,COMPLETE,INCOMPLETE',
-        ]);
-
-        $this->authorize('update', $collection);
+        ]); 
 
         $collection->update($request->all());
 
