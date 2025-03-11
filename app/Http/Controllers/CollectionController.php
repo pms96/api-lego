@@ -27,5 +27,22 @@ class CollectionController extends Controller
 
         return new CollectionResource($collection);
     }
+
+    public function update(Request $request, UserCollection $collection)
+    {
+        $request->validate([
+            'brickheadz_id' => 'sometimes|exists:brickheadzs,id',
+            'date_acquired' => 'nullable|date',
+            'price_acquired' => 'nullable',
+            'status' => 'nullable|in:NEW,BOX AND INSTRUCTIONS,ONLY BOX,INSTRUCTIONS,COMPLETE,INCOMPLETE',
+        ]);
+
+        $this->authorize('update', $collection);
+
+        $collection->update($request->all());
+
+        return new CollectionResource($collection);
+    }
+
 }
 
