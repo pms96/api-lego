@@ -20,7 +20,7 @@ class CollectionController extends Controller
             'user_id' => 'required|exists:users,id',
             'date_acquired' => 'nullable|date',
             'price_acquired' => 'nullable',
-            'status' => 'nullable|in:NEW,BOX AND INSTRUCTIONS,ONLY BOX,INSTRUCTIONS,COMPLETE,INCOMPLETE',
+            'status' => 'nullable|in:NEW,BOX_AND_INSTRUCTIONS,ONLY_BOX,INSTRUCTIONS,COMPLETE,INCOMPLETE',
         ]);
 
         $collection = $request->user()->collection()->create($request->all());
@@ -34,7 +34,7 @@ class CollectionController extends Controller
             'brickheadz_id' => 'sometimes|exists:brickheadzs,id',
             'date_acquired' => 'nullable|date',
             'price_acquired' => 'nullable',
-            'status' => 'nullable|in:NEW,BOX AND INSTRUCTIONS,ONLY BOX,INSTRUCTIONS,COMPLETE,INCOMPLETE',
+            'status' => 'nullable|in:NEW,BOX_AND_INSTRUCTIONS,ONLY_BOX,INSTRUCTIONS,COMPLETE,INCOMPLETE',
         ]); 
 
         $collection->update($request->all());
