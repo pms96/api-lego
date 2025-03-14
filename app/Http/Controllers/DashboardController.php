@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\UserCollection;
 
 class DashboardController extends Controller
 {
-    public function getStats(Request $request)
+    public function getStats(Request $request, User $user)
     {
-        if (!auth()->check()) {
+        if (!auth()) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
     
-        $userId = auth()->id();
+        $userId = $user->id;
         
         // Estadísticas generales
         $generalStats = UserCollection::where('user_id', $userId)
