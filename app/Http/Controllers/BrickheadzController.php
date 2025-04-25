@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brickheadz;
 use App\Http\Resources\BrickheadzResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BrickheadzController extends Controller
@@ -11,8 +12,13 @@ class BrickheadzController extends Controller
     public function index()
     {
         return BrickheadzResource::collection(Brickheadz::paginate(60));
+    }    
+
+    public function show($id)
+    {
+        return new BrickheadzResource(Brickheadz::findOrFail($id));
     }
-        
+
     public function missing(Request $request, User $user)
     {
         if (!auth()) {
@@ -29,11 +35,6 @@ class BrickheadzController extends Controller
         ->get();
 
         return BrickheadzResource::collection($missings);
-    }
-
-    public function show($id)
-    {
-        return new BrickheadzResource(Brickheadz::findOrFail($id));
     }
 }
 
