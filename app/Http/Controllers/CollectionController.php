@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\UserCollection;
 use Illuminate\Http\Request;
 use App\Http\Resources\CollectionResource;
+use App\Models\Brickheadz;
 
 class CollectionController extends Controller
 {
     public function index(Request $request)
     {
-        return CollectionResource::collection($request->user()->collection()->paginate(12));
-    }
+        return CollectionResource::collection($request->user()->collection()->paginate(60));
+    }    
 
     public function store(Request $request)
     {
@@ -40,6 +41,18 @@ class CollectionController extends Controller
         $collection->update($request->all());
 
         return new CollectionResource($collection);
+    }
+
+
+    public function delete(Request $request, UserCollection $collection)
+    {
+        if ($request->user()->id !== $collection->user_id) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        $collection->delete();
+
+        return response()->json(['message' => 'Collection item deleted successfully.']);
     }
 
 }
